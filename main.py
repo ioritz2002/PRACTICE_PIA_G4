@@ -17,8 +17,6 @@ def set_fecha_nacimiento(fecha):
 
 
 def run():
-    data = {}
-
     persona = objetos_y_clases.Persona()
     persona.nombre = input("Introduce el nombre\n")
     persona.apellidos = input("Introduce los apellidos\n")
@@ -37,6 +35,15 @@ def run():
     with open("personas.json", "w") as archivo:
         archivo.write(json.dumps(personas, indent=4))
 
+
+    with open("personas.json", "r") as archivo:
+        contenido = archivo.read()
+        personas = json.loads(contenido) if contenido else []
+    
+
+
+    for i in personas:
+        print(i)
     
 
 run()

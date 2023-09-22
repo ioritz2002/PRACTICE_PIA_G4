@@ -8,5 +8,10 @@
         "nombre": "iker",
         "apellidos": "torrecillas",
         "fecha_nacimiento": "05/05/2005"
+    },
+    {
+        "nombre": "unax",
+        "apellidos": "urkiri",
+        "fecha_nacimiento": "13/05/2007"
     }
 ]
