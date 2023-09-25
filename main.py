@@ -74,4 +74,18 @@ def run():
     
     persona = personas[0]
     print(persona.nombre)
+
+    #Esto lee el archivo y lo guarda como un objeto json
+    with open("personas.json", "r") as archivo:
+        datos = json.load(archivo)
+
+    #Recorre el diccionario entero y modifica el que quiere
+    for persona in datos:
+        if persona["nombre"] == "jaime":
+            persona["apellidos"] = "rodriguez"
+
+    #Actualiza el elemento modificado en el json
+    with open("personas.json", "w") as archivo:
+        json.dump(datos, archivo, indent=4)
+
 run()
