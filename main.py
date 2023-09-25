@@ -5,10 +5,12 @@ import json
 
 from datetime import datetime
 
-
+#Metodo para setear fecha de nacimento en formato valido para json
 def set_fecha_nacimiento(fecha):
     try:
+        #Esto lo formatea a un datetime
         fecha_nacimiento = datetime.strptime(str(fecha), "%d/%m/%Y")
+        #Esto lo formatea a string pero en un formato que se quiera
         return fecha_nacimiento.strftime("%d/%m/%Y")
     except Exception:
         print("Fecha incorrecta")
@@ -21,6 +23,7 @@ def run():
     persona = objetos_y_clases.Persona()
     persona.nombre = input("Introduce el nombre\n")
     persona.apellidos = input("Introduce los apellidos\n")
+    #Fecha en formato string
     fecha = input("Introduce la fecha de nacimiento en formato dd/mm/aaaa\n")
     persona.fecha_nacimiento = set_fecha_nacimiento(fecha)
     
