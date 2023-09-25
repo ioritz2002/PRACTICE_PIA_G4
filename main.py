@@ -37,15 +37,12 @@ def run():
     
     personas = []
     personas = plantilla_metodos.read_objects(file_name)
-    
-    for i in range(len(personas)):
-        if personas[i].nombre == "xabi":
-            persona = personas[i]
-            key = persona.nombre
-            persona.nombre = "xabier"
-        
 
-    plantilla_metodos.update(persona, key, file_name)
+    for p in personas:
+        if p.nombre == "xabi":
+            key = p.nombre
+            p.nombre = "xabier"
+            plantilla_metodos.update(p, key, file_name)
     #Lee el json y lo guarda en una lista de objetos de tipo Persona para poder utilizarlo
    # with open("personas.json", "r") as archivo:
     #    contenido = archivo.read()
