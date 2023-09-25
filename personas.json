@@ -13,5 +13,15 @@
         "nombre": "unax",
         "apellidos": "urkiri",
         "fecha_nacimiento": "13/05/2007"
+    },
+    {
+        "nombre": "gaizka",
+        "apellidos": "lopez",
+        "fecha_nacimiento": "06/06/1998"
+    },
+    {
+        "nombre": "jaime",
+        "apellidos": "ro",
+        "fecha_nacimiento": "03/03/1997"
     }
 ]
