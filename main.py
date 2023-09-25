@@ -33,9 +33,15 @@ def run():
     #Abrimos el archivo en modo lectura para ver si el archivo esta vacio
     #o por el contrario hay datos ya introducidos, en caso de que haya datos introducidos
     #los lee y los guarda en la lista de personas
-    with open("personas.json", "r") as archivo:
-        contenido = archivo.read()
-        personas = json.loads(contenido) if contenido else []
+    try:
+
+        with open("personas.json", "r") as archivo:
+            contenido = archivo.read()
+            personas = json.loads(contenido) if contenido else []
+
+    except FileNotFoundError:
+        with open("personas.json", "w") as archivo:
+            archivo.write(json.dumps(personas, indendt=4))
    
     #Añadimos a la lista de personas el objeto de persona creado por nosotros y lo guardamos como diccionario
     personas.append(persona.__dict__)
