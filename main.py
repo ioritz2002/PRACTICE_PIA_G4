@@ -2,8 +2,14 @@
 
 import objetos_y_clases
 import json
+import plantilla_metodos
 
 from datetime import datetime
+
+file_name = "personas.json"
+
+
+
 
 #Metodo para setear fecha de nacimento en formato valido para json
 def set_fecha_nacimiento(fecha):
@@ -20,72 +26,55 @@ def set_fecha_nacimiento(fecha):
 
 def run():
     #Creamos el objeto y le introducimos los datos
-    persona = objetos_y_clases.Persona()
-    persona.nombre = input("Introduce el nombre\n")
-    persona.apellidos = input("Introduce los apellidos\n")
+    #persona = objetos_y_clases.Persona()
+    #persona.nombre = input("Introduce el nombre\n")
+    #persona.apellidos = input("Introduce los apellidos\n")
     #Fecha en formato string
-    fecha = input("Introduce la fecha de nacimiento en formato dd/mm/aaaa\n")
-    persona.fecha_nacimiento = set_fecha_nacimiento(fecha)
-    
-    #Una lista vacia de personas
-    personas = []
+    #fecha = input("Introduce la fecha de nacimiento en formato dd/mm/aaaa\n")
+    #persona.fecha_nacimiento = set_fecha_nacimiento(fecha)
 
-    #Abrimos el archivo en modo lectura para ver si el archivo esta vacio
-    #o por el contrario hay datos ya introducidos, en caso de que haya datos introducidos
-    #los lee y los guarda en la lista de personas
-    try:
-
-        with open("personas.json", "r") as archivo:
-            contenido = archivo.read()
-            personas = json.loads(contenido) if contenido else []
-
-    except FileNotFoundError:
-        with open("personas.json", "w") as archivo:
-            archivo.write(json.dumps(personas, indendt=4))
-   
-    #Añadimos a la lista de personas el objeto de persona creado por nosotros y lo guardamos como diccionario
-    personas.append(persona.__dict__)
-
-    #Esto escribe en el json
-    with open("personas.json", "w") as archivo:
-       archivo.write(json.dumps(personas, indent=4))
-
-    #Esto lee el json y lo guarda como strings y por tanto no se puede usar como objeto del tipo persona
-    with open("personas.json", "r") as archivo:
-        contenido = archivo.read()
-        personas = json.loads(contenido) if contenido else []
+    #plantilla_metodos.write(persona, file_name)
     
     personas = []
-
-    #Lee el json y lo guarda en una lista de objetos de tipo Persona para poder utilizarlo
-    with open("personas.json", "r") as archivo:
-        contenido = archivo.read()
+    personas = plantilla_metodos.read_objects(file_name)
+    
+    for i in range(len(personas)):
+        if personas[i].nombre == "xabi":
+            persona = personas[i]
+            key = persona.nombre
+            persona.nombre = "xabier"
         
-        if contenido:
-            datos = json.loads(contenido)
 
-            for d in datos:
-                persona = objetos_y_clases.Persona()
-                persona.nombre = d["nombre"]
-                persona.apellidos = d["apellidos"]
-                persona.fecha_nacimiento = d["fecha_nacimiento"]
+    plantilla_metodos.update(persona, key, file_name)
+    #Lee el json y lo guarda en una lista de objetos de tipo Persona para poder utilizarlo
+   # with open("personas.json", "r") as archivo:
+    #    contenido = archivo.read()
+        
+     #   if contenido:
+     #       datos = json.loads(contenido)
 
-                personas.append(persona)
+      #      for d in datos:
+       #         persona = objetos_y_clases.Persona()
+        #        persona.nombre = d["nombre"]
+         #       persona.apellidos = d["apellidos"]
+          #      persona.fecha_nacimiento = d["fecha_nacimiento"]
+
+           #     personas.append(persona)
     
-    persona = personas[0]
-    print(persona.nombre)
+   # persona = personas[0]
+    #print(persona.nombre)
 
     #Esto lee el archivo y lo guarda como un objeto json
-    with open("personas.json", "r") as archivo:
-        datos = json.load(archivo)
+    #with open("personas.json", "r") as archivo:
+    #    datos = json.load(archivo)
 
     #Recorre el diccionario entero y modifica el que quiere
-    for persona in datos:
-        if persona["nombre"] == "jaime":
-            persona["apellidos"] = "rodriguez"
+    #for persona in datos:
+     #   if persona["nombre"] == "jaime":
+      #      persona["apellidos"] = "rodriguez"
 
     #Actualiza el elemento modificado en el json
-    with open("personas.json", "w") as archivo:
-        json.dump(datos, archivo, indent=4)
+    #with open("personas.json", "w") as archivo:
+     #   json.dump(datos, archivo, indent=4)
 
 run()
