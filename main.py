@@ -34,9 +34,13 @@ def run():
     persona.fecha_nacimiento = set_fecha_nacimiento(fecha)
 
     plantilla_metodos.write(persona, file_name)
-    
+    personas = plantilla_metodos.read(file_name)
+    print(personas)
+
     personas = []
     personas = plantilla_metodos.read_objects(file_name)
+    print(personas)
+    print(personas[0].nombre)
 
     for p in personas:
         if p.nombre == "xabi":
