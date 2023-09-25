@@ -10,7 +10,7 @@ def write(obj, file_name):
         archivo.write(json.dumps(objs, indent=4))
     pass
 
-
+#Lee en formato string
 def read(file_name):
     objs = []
 
@@ -28,6 +28,7 @@ def read(file_name):
         return []
 
 #Adaptarlo a las necesidades del software
+#Retorna una lista de objetos de lo que se guarda en python
 def read_objects(file_name):
     objs = []
 
@@ -53,16 +54,20 @@ def read_objects(file_name):
             archivo.write(json.dumps(objs, indent=4))
 
         return []
-
+#Modificar en funcion de las necesidades del software
 def delete(obj, file_name):
-    pass
+    objs = read_objects
 
-def update(obj, key, file_name):
+    
+
+    pass
+#Actualiza 
+def update(obj, key_value, file_name):
     with open(file_name, "r") as archivo:
         datos = json.load(archivo)
     
     for persona in datos:
-        if persona["nombre"] == key:
+        if persona["nombre"] == key_value:
             persona["nombre"] = obj.nombre
 
     with open(file_name, "w") as archivo:
