@@ -2,7 +2,6 @@ import json
 import objetos_y_clases
 
 def write(obj, file_name):
-    objs = []
     objs = read(file_name)
     objs.append(obj.__dict__)
     
@@ -57,7 +56,6 @@ def read_objects(file_name):
         return []
 #Modificar en funcion de las necesidades del software
 def delete(dni, file_name):
-    
 
     try:
         objs = read(file_name)
@@ -78,20 +76,3 @@ def delete(dni, file_name):
     pass
 
     
-
-    
-#Actualiza 
-#Adaptarlo a las necesidades del sofware
-def update(obj, key_value, file_name):
-    with open(file_name, "r") as archivo:
-        datos = json.load(archivo)
-    
-    for persona in datos:
-        if persona["nombre"] == key_value:
-            persona["nombre"] = obj.nombre
-
-    with open(file_name, "w") as archivo:
-        json.dump(datos, archivo, indent=4)
-
-    pass
-
