@@ -56,13 +56,32 @@ def read_objects(file_name):
 
         return []
 #Modificar en funcion de las necesidades del software
-def delete(obj, file_name):
-    objs = read_objects
+def delete(dni, file_name):
+    
+
+    try:
+        objs = read(file_name)
+        new_list = []
+
+        for i in objs:
+            if i["dni"] != dni:
+                new_list.append(i)
+
+        with open(file_name, "w") as archivo:
+            json.dump(new_list, archivo, indent=4)
+
+        
+        
+    except FileNotFoundError:
+        raise Exception("El fichero no existe")
+
+    pass
 
     
 
-    pass
+    
 #Actualiza 
+#Adaptarlo a las necesidades del sofware
 def update(obj, key_value, file_name):
     with open(file_name, "r") as archivo:
         datos = json.load(archivo)

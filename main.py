@@ -29,22 +29,35 @@ def persona_exist(personas, dni):
 
 
 def run():
-    #Creamos el objeto y le introducimos los datos
-    persona = objetos_y_clases.Persona()
-    persona.nombre = input("Introduce el nombre\n")
-    persona.apellidos = input("Introduce los apellidos\n")
-    #Fecha en formato string
-    fecha = input("Introduce la fecha de nacimiento en formato dd/mm/aaaa\n")
-    persona.fecha_nacimiento = set_fecha_nacimiento(fecha)
-    persona.dni = input("Introduce el dni\n")
-
+    #Eliminar persona
+    dni_borrar = input("Introduce el dni de la persona que quiere eliminar\n")
     personas = plantilla_metodos.read_objects(file_name)
-    if persona_exist(personas, persona.dni) == False:
-        plantilla_metodos.write(persona, file_name)
     
+    if persona_exist(personas, dni_borrar):
+        try:
+            plantilla_metodos.delete(dni_borrar, file_name)
+        except Exception as e:
+            print(e.args)
     else:
-        print("Esta persona ya existe")
+        print("No existe la persona que quiere eliminar")
+    #Creamos el objeto y le introducimos los datos
+   # persona = objetos_y_clases.Persona()
+    # persona.nombre = input("Introduce el nombre\n")
+   # persona.apellidos = input("Introduce los apellidos\n")
+    #Fecha en formato string
+    # fecha = input("Introduce la fecha de nacimiento en formato dd/mm/aaaa\n")
+    # persona.fecha_nacimiento = set_fecha_nacimiento(fecha)
+    # persona.dni = input("Introduce el dni\n")
+
+   #  personas = plantilla_metodos.read_objects(file_name)
+   #  if persona_exist(personas, persona.dni) == False:
+    #     plantilla_metodos.write(persona, file_name)
     
+   #  else:
+       # print("Esta persona ya existe")
+    
+    
+
    # personas = plantilla_metodos.read(file_name)
     #print(personas)
 
@@ -58,5 +71,11 @@ def run():
      #       key_value = p.nombre
      #       p.nombre = "xabier"
      #       plantilla_metodos.update(p, key_value, file_name)
+    
+    
+    
+    
+    
+
    
 run()
