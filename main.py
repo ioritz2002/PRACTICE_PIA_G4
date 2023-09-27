@@ -12,6 +12,7 @@ file_name = "personas.json"
 
 
 #Metodo para setear fecha de nacimento en formato valido para json
+
 def set_fecha_nacimiento(fecha):
     try:
         #Esto lo formatea a un datetime
@@ -20,9 +21,6 @@ def set_fecha_nacimiento(fecha):
         return fecha_nacimiento.strftime("%d/%m/%Y")
     except Exception:
         print("Fecha incorrecta")
-
-    
-
 
 def run():
     #Creamos el objeto y le introducimos los datos
@@ -49,3 +47,4 @@ def run():
             plantilla_metodos.update(p, key_value, file_name)
    
 run()
+
