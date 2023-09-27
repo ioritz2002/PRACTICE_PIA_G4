@@ -1,12 +1,14 @@
 [
     {
+        "dni": "46374082X",
         "nombre": "ioritz",
         "apellidos": "urkiri",
         "fecha_nacimiento": "11/07/2002"
     },
     {
-        "nombre": "xabier",
-        "apellidos": "urkiri",
-        "fecha_nacimiento": "13/06/1972"
+        "dni": "30690891J",
+        "nombre": "pedro",
+        "apellidos": "pepepe",
+        "fecha_nacimiento": "11/05/2001"
     }
 ]

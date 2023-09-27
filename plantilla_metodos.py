@@ -42,6 +42,7 @@ def read_objects(file_name):
 
                 for d in datos:
                     persona = objetos_y_clases.Persona()
+                    persona.dni = d["dni"]
                     persona.nombre = d["nombre"]
                     persona.apellidos = d["apellidos"]
                     persona.fecha_nacimiento = d["fecha_nacimiento"]
